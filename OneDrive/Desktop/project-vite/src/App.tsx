@@ -16,7 +16,7 @@ function App() {
       setTodos([...todos, inputText]);
       setInputText('');
     } else {
-      alert("Can't add an empty task, let's be productive! 😄");
+      alert("please add a task");
     }
   };
 
