@@ -1,50 +1,44 @@
 import { useState } from "react";
+import Modal from "./components/Modal";
+import ToDo from "./ToDo"; // Adapt the location to your strategy
 
 function App() {
+  const [todos, setTodos] = useState(['Do the dishes.', 'Finish this project.']); // Minor variable name standardization
+  const [inputText, setInputText] = useState('');
 
-    const [todos, setToDos] = useState(['Do the dishes.', 'Finish this project.']);
-
-    // State for the input text
-    const [inputText, setInputText] = useState('');
-
-    // Handle input text change
-    const handleInputChange = (event) => {
-      setInputText(event.target.value);
-    };
+  const handleInputChange = (event) => {
+    setInputText(event.target.value);
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevents form from refreshing the page
-    // Adds the new task if inputText is not empty
+    event.preventDefault();
     if (inputText.trim() !== '') {
-      setToDos([...todos, inputText]);
-      setInputText(''); // Clear the input after adding
+      setTodos([...todos, inputText]);
+      setInputText('');
     } else {
       alert("Can't add an empty task, let's be productive! 😄");
     }
   };
 
+  // Match index and filter by index
+  const handleDelete = (indexToDelete) => {
+    setTodos(todos.filter((_todo, index) => index !== indexToDelete));
+  };
 
-    // TODO: make components needed for TODO
   return (
     <>
       <ul>
         {todos.map((todo, index) => (
-          <li key={index}>{todo}</li> 
+          <ToDo key={index} text={todo} onDelete={() => handleDelete(index)} />
         ))}
       </ul>
-
-
-      <form onSubmit={handleSubmit}
-       style={{
-         marginTop: '10px',
-       }}>
+      <form onSubmit={handleSubmit} style={{marginTop: '10px'}}>
         <input value={inputText} onChange={handleInputChange} />
         <button type="submit">Create Task</button>
       </form>
-
-      
+      <Modal />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
