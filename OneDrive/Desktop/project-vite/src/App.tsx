@@ -7,12 +7,12 @@ function App() {
   const [inputText, setInputText] = useState('');
 
   // event handler to display text as user types in form
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(event.target.value);
   };
 
   // adds new item to todos list
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (inputText.trim() !== '') {
       setTodos([...todos, inputText]);
@@ -23,15 +23,12 @@ function App() {
   };
 
   // filter by index
-  const handleDelete = (indexToDelete) => {
+  const handleDelete = (indexToDelete: number) => {
     setTodos(todos.filter((_todo, index) => index !== indexToDelete));
   };
 
   return (
     <>
-    {
-      
-    }
       {/* maps all todos to a ToDo component and displays */}
       <ul>
         {todos.map((todo, index) => (
