@@ -1,15 +1,17 @@
 import { useState } from "react";
 import Modal from "./components/Modal";
-import ToDo from "./ToDo"; // Adapt the location to your strategy
+import ToDo from "./ToDo"; 
 
 function App() {
-  const [todos, setTodos] = useState(['Do the dishes.', 'Finish this project.']); // Minor variable name standardization
+  const [todos, setTodos] = useState(['do the dishes.', 'finish this project.']); 
   const [inputText, setInputText] = useState('');
 
+  // event handler to display text as user types in form
   const handleInputChange = (event) => {
     setInputText(event.target.value);
   };
 
+  // adds new item to todos list
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputText.trim() !== '') {
@@ -20,21 +22,27 @@ function App() {
     }
   };
 
-  // Match index and filter by index
+  // filter by index
   const handleDelete = (indexToDelete) => {
     setTodos(todos.filter((_todo, index) => index !== indexToDelete));
   };
 
   return (
     <>
+    {
+      
+    }
+      {/* maps all todos to a ToDo component and displays */}
       <ul>
         {todos.map((todo, index) => (
           <ToDo key={index} text={todo} onDelete={() => handleDelete(index)} />
         ))}
       </ul>
+
+      {/* form for adding new todos */}
       <form onSubmit={handleSubmit} style={{marginTop: '10px'}}>
         <input value={inputText} onChange={handleInputChange} />
-        <button type="submit">Create Task</button>
+        <button type="submit">create task</button>
       </form>
       <Modal />
     </>

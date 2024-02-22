@@ -1,12 +1,13 @@
 // In ToDo.js
-function ToDo({ text, onDelete }) { // Receives the onDelete prop
+// takes 2 props, text = what text to display and onDelete = reference to function for deleting specific key
+export default function ToDo({ text, onDelete }) {
     return (
       <li>
         {text}
-        <button onClick={onDelete} style={{ marginLeft: '10px' }}>Delete</button>
+        <button onClick={onDelete} style={{ marginLeft: '10px' }}>delete</button>
       </li>
     );
   }
   
-  export default ToDo;
+
   
