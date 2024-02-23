@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Modal from "./components/Modal";
 import ToDo from "./ToDo"; 
+import './index.css'; 
+
 
 function App() {
   const [todos, setTodos] = useState(['do the dishes.', 'finish this project.']); 
@@ -29,6 +31,7 @@ function App() {
 
   return (
     <>
+      <h1> vivian's to do list </h1>
       {/* maps all todos to a ToDo component and displays */}
       <ul>
         {todos.map((todo, index) => (
@@ -39,7 +42,7 @@ function App() {
       {/* form for adding new todos */}
       <form onSubmit={handleSubmit} style={{marginTop: '10px'}}>
         <input value={inputText} onChange={handleInputChange} />
-        <button type="submit">create task</button>
+        <button type="submit">Create Task</button>
       </form>
       <Modal />
     </>

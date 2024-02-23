@@ -12,7 +12,7 @@ export default function Modal() {
 
   // render the button if isOpen is false, else render the modal
   return !isOpen ? (
-    <button onClick={toggleModal}>Click Me!</button>
+    <button onClick={toggleModal} style={{ marginTop: '50px' }}>Click Me!</button>
   ) : createPortal(
     <div style={{ // css styling
       position: 'fixed', 
